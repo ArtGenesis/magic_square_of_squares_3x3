@@ -4,9 +4,9 @@ with 6 perfect square
 '''
 
 '''
-Work with x = odd(5), y = even(6), and different x = even(6), y = odd(5)
-Example: tri_duplet(5, 6)
 
+Example: tri_duplet(5, 6)
+Work with x = odd(x), y = even(y), and different x = even(x), y = odd(y)
 6 * 3(18)
 5 + 6(11), 5 - 6 (1)
 5 + 18(23), 5 - 18(13)
@@ -41,7 +41,7 @@ def tri_duplet(x, y):
 
 '''
 Example: get_plus_double_square(5, 1)
-Work with x = odd(5), y = odd(1), and different x = odd(1), y = odd(5)                             
+Work with x = odd(x), y = odd(y), and different x = odd(x), y = odd(y)                             
 
 5**2(25), 1**2 (1)
 25 + (2 * 1**2) // 3 (9)
@@ -84,7 +84,7 @@ def get_plus_double_square(x, y):
 
 '''
 Example: get_square_minus_square(13, 7)
-Work with x = odd(13), y = odd(7), and same x = odd(7), y = odd(13)                          
+Work with x = odd(x), y = odd(y), and same x = odd(x), y = odd(y)                          
 
 13**2(169), 7**2(49)
 (169-49) // 3 (40)
