@@ -4,7 +4,7 @@ with 6 perfect square
 '''
 
 '''
-Work with x = odd, y = even, and x = even, y = odd
+Work with x = odd(5), y = even(6), and different x = even(6), y = odd(5)
 Example: tri_duplet(5, 6)
 
 6 * 3(18)
