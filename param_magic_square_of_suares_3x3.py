@@ -1,6 +1,6 @@
 '''
 Some python functions to generate magic square of squares 3x3
-with 6 perfect square
+with 6 perfect squares
 '''
 
 '''
