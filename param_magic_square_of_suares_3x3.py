@@ -25,7 +25,17 @@ check func :
 11639      223300321     17639
 170807881    20399       9109
 
+Smallest :
+x = 2, y = 1:
 
+37    41    265       47    1  1897
+1    1105   47        1057 37   41
+1945  23    29        29  2737  23
+
+x = 1, y = 2:
+197    151    14425   
+31    25345   223          
+36265  167    109     
 '''
 
 def tri_duplet(x, y):                         
@@ -57,16 +67,17 @@ Work with x = odd(x), y = odd(y), and different x = odd(x), y = odd(y)
 425**2 - 34650 * 4, 425**2, 425**2 + 34650 * 4
 373**2 - 34650 * 4, 373**2, 373**2 + 34650 * 4
 
-check func :
-425        23    298477
-527      159877   205
-21277     565     373
+Smallest : 
+x = 5, y = 1
+425        23    298477      565    23     222121   
+527      159877   205        289    425    527
+21277     565     373        373   360721  205
 
-or
 
-565    23     222121 
-289    425    527
-373   360721  205
+x = 1, y = 5
+
+
+
 
 
 '''
@@ -128,7 +139,6 @@ def checkmagic(n1, n2):
     a, b, c = n1 
     d, e, f = n2
 
-   
     if b * 2 > f:
         g = b * 2 - d
         h = b * 2 - e
@@ -140,7 +150,6 @@ def checkmagic(n1, n2):
             print(n1, n2, g, h, j)
         #print(n1, n2, g, h, j)
     
-   
     if e * 2 > c:
         g = e * 2 - a
         h = e * 2 - b
@@ -152,7 +161,6 @@ def checkmagic(n1, n2):
             print(n2, n1, g, h, j)
         #print(n1, n2, g, h, j)
 
-   
     #check if one of result in diagonal is perfect square 
     ad = (a + d) // 2
     be = (b + e) // 2
