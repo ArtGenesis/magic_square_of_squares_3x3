@@ -1,3 +1,6 @@
+from decimal import *
+getcontext().prec = 200 #need increase with big argument 
+
 '''
 Some python functions to generate magic square of squares 3x3
 with 6 perfect squares
@@ -111,3 +114,55 @@ def get_square_minus_square(x, y):
     tripa = [sqra**2 - area4, sqra**2, sqra**2 + area4]
     tripb = [sqrb**2 - area4, sqrb**2, sqrb**2 + area4]
     return tripa, tripb, area
+
+
+'''
+checkmagic(list1, list2)
+Get two list with perfect squares from functions above
+and check if exist at least one another perfect square
+in different positions, if exists atleast one, print...
+'''
+
+def checkmagic(n1, n2): 
+    
+    a, b, c = n1 
+    d, e, f = n2
+
+   
+    if b * 2 > f:
+        g = b * 2 - d
+        h = b * 2 - e
+        j = b * 2 - f
+        gs = Decimal(g).sqrt()
+        hs = Decimal(h).sqrt()
+        js = Decimal(j).sqrt()
+        if gs % 1 == 0 or hs % 1 == 0 or js % 1 == 0:
+            print(n1, n2, g, h, j)
+        #print(n1, n2, g, h, j)
+    
+   
+    if e * 2 > c:
+        g = e * 2 - a
+        h = e * 2 - b
+        j = e * 2 - c
+        gs = Decimal(g).sqrt()
+        hs = Decimal(h).sqrt()
+        js = Decimal(j).sqrt()
+        if gs % 1 == 0 or hs % 1 == 0 or js % 1 == 0:
+            print(n2, n1, g, h, j)
+        #print(n1, n2, g, h, j)
+
+   
+    #check if one of result in diagonal is perfect square 
+    ad = (a + d) // 2
+    be = (b + e) // 2
+    cf = (c + f) // 2
+    ads = Decimal(ad).sqrt()
+    bes = Decimal(be).sqrt()
+    cfs = Decimal(cf).sqrt()
+    #print(n1, n2, ad, be, cf)
+    if ads % 1 == 0 or bes % 1 == 0 or cfs % 1 == 0:
+        print(n1, n2, ad, be, cf)
+
+      
+      
