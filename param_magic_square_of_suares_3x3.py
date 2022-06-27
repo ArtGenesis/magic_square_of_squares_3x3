@@ -194,7 +194,7 @@ def checkmagic(n1, n2):
         
         
 '''
-Another way to construct magic square 3x3 with 6 perfect square
+Another way to construct magic square 3x3 with 6 perfect squares
 I Don't have time to write deepest realisation with some optimisation,
 but with some trick need check only three numbers to know is number is
 additional 7 perfect square, one of corner is always perfect square
