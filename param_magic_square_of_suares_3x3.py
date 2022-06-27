@@ -191,5 +191,73 @@ def checkmagic(n1, n2):
     if ads % 1 == 0 or bes % 1 == 0 or cfs % 1 == 0:
         print(n1, n2, ad, be, cf)
 
+        
+        
+'''
+Another way to construct magic square 3x3 with 6 perfect square
+I Don't have time to write deepest realisation with some optimisation,
+but with some trick need check only three numbers to know is number is
+additional 7 perfect square, one of corner is always perfect square
+(maybe prefer use arguments, such that sum of squares such arguments will be perfect square)
+
+Work with x = odd(x), y = even(y), and different x = even(x), y = odd(y)
+
+Smallest:
+x = 1, y = 2
+
+7081  23  5065 
+47    65   79
+3385  89   37
+
+x = 2, y = 1
+
+60169  49   40105
+119    185  233
+28345  257  91
+'''
+
+def corner_square(x, y):           
+    if x > y:
+        xpy =  x + y
+        xmy = abs(x - y)
+        a, a2 = xmy * y, xmy * x 
+        b, b2 = xpy * x, xpy * y
+        corner = ((a + b) * (a2**2 + b2**2))**2
+    else:
+        xpy = abs(x - y)
+        xmy =  x + y                
+        a, a2 = xmy * x, xmy * y   
+        b, b2 = xpy * y, xpy * x
+        corner = (abs(a - b) * (a2**2 + b2**2))**2
+
+    od1 = y * a + x * b             
+    ev1 = abs(x * a - y * b)        
+    od2 = abs(y * a - x * b)        
+    ev2 = x * a + y * b             
+   
+    n = od1**2 + ev1**2             
+
+    ar1 = abs((od1 - ev1) * od1 * ev1 * (od1 + ev1) * 4)
+    ar2 = abs((od2 - ev2) * od2 * ev2 * (ev2 + od2) * 4)
+
+    tripa = [n**2 - ar1, n**2, n**2 + ar1]
+    tripb = [n**2 - ar2, n**2, n**2 + ar2]
+
+    return tripa, tripb, corner      
       
-      
+
+def check_corner_square(n1, n2, corner):
+    a, b, c = n1
+    d, b, e = n2
+
+    ad = (a + d) // 2
+    ae = (a + e) // 2
+    cd = (c + d) // 2
+    ce = (c + e) // 2
+    li = [ad, ae, cd, ce]
+    #print(n1, n2, ad, ae, cd, ce)
+    for i in li:
+        if i != corner:
+            sq = Decimal(i).sqrt()
+            if sq % 1 == 0:
+                print(n1, n2, corner, i)
