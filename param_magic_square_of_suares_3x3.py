@@ -58,7 +58,66 @@ def tri_duplet(x, y):
     return tripa, tripb, area            
     
 
+'''
+It is interesting that at tri_duplet_2(x = 5, y = 2) there is a crossover
+with the  tri_duplet(x = 22, y = 31) with different pairs
+tri_duplet(22, 31) = [12748429, 6203957], 8943387723270
+tri_duplet_2(5, 2) = [12748429, 10085069], 8943387723270
+maybe can be exist another intersection with such algorithms...or others algorithms..
 
+Smallest :
+
+x = 1, y = 2 and same y = 2, x = 1
+
+4201969    991      2965            2887       991      17056825 
+3041     4658425   263              17513281   2965     263
+725       2887    5114881           725      16600369   3041
+
+'''
+
+def tri_duplet_2(x, y):            
+    xpy, xmy = x + y, abs(x - y)   
+    a, b = xpy * xmy, x * y * 2    
+    even = ((a * b) // 3) * 2      
+    db_even =  even * 2            
+    ap_m_bp = abs(a**2 - b**2)     
+
+    od1 = ap_m_bp + db_even         
+    od2 = ap_m_bp - db_even         
+
+    odx1 = abs(od1 * y - even * x)
+    ody1 = abs(od1 * x + even * y)
+
+    odx2 = abs(od2 * y - even * x)
+    ody2 = abs(od2 * x + even * y)
+    
+    odx3 = abs(od1 * y + even * x)
+    ody3 = abs(od1 * x - even * y)
+
+    odx4 = abs(od2 * y + even * x)
+    ody4 = abs(od2 * x - even * y)
+
+    area1 = abs((odx1**2 - ody1**2) * odx1 * ody1)
+    area2 = abs((odx2**2 - ody2**2) * odx2 * ody2)
+    area3 = abs((odx3**2 - ody3**2) * odx3 * ody3)
+    area4 = abs((odx4**2 - ody4**2) * odx4 * ody4)
+
+    #area1 = area2 while (y / x) < (sqrt(2) + 1)
+    if area1 == area2:
+        sqra, sqrb = (odx1**2 + ody1**2)**2, (odx2**2 + ody2**2)**2
+        tripa = [sqra - area1 * 4, sqra, sqra + area1 * 4]
+        tripb = [sqrb - area1 * 4, sqrb, sqrb + area1 * 4]
+        return tripa, tripb, area1
+
+    #area3 = area4 while (y / x) > (sqrt(2) + 1)
+    if area3 == area4:
+        sqra, sqrb = (odx4**2 + ody4**2)**2, (odx3**2 + ody3**2)**2
+        tripa = [sqra - area3 * 4, sqra, sqra + area3 * 4]
+        tripb = [sqrb - area3 * 4, sqrb, sqrb + area3 * 4]
+        return tripa, tripb, area3
+    
+    
+    
 '''
 Example: get_plus_double_square(5, 1)
 Work with x = odd(x), y = odd(y), and different x = odd(x), y = odd(y)                             
@@ -224,7 +283,7 @@ def corner_square(x, y):
         b, b2 = xpy * x, xpy * y
         corner = ((a + b) * (a2**2 + b2**2))**2
     else:
-        xpy = abs(x - y)
+        xpy =  y - x
         xmy =  x + y                
         a, a2 = xmy * x, xmy * y   
         b, b2 = xpy * y, xpy * x
